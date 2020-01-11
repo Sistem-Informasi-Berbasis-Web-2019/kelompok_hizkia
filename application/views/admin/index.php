@@ -1,0 +1,205 @@
+<?php
+// $user = $this->session->userdata('id');
+// if (!isset($user)) {
+//     echo '<script>
+// alert("Anda Belum Login");
+// document.location.href="'.base_url('login').'";
+// </script>';
+// }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Admin LLA</title>
+
+  <!-- Favicons-->
+  <link rel="icon" href="<?php echo base_url()?>assets/admin/images/favicon/favicon-32x32.png" sizes="32x32">
+
+
+  <!-- CORE CSS-->
+  
+  <link href="<?php echo base_url()?>assets/admin/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url()?>assets/admin/css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <!-- Custome CSS-->    
+    <link href="<?php echo base_url()?>assets/admin/css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  <link href="<?php echo base_url()?>assets/admin/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="..js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+  <link href="<?php echo base_url()?>assets/admin/js/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+
+</head>
+
+<body>
+  <!-- START HEADER -->
+  <header id="header" class="page-topbar">
+        <div class="navbar-fixed">
+            <nav class="navbar-color">
+                <div class="nav-wrapper">
+                </div>
+            </nav>
+        </div>
+  </header>
+  <!-- END HEADER -->
+
+ 
+  <!-- START MAIN -->
+  <div id="main">
+    <div class="wrapper">
+      <!-- START LEFT SIDEBAR NAV-->
+      <aside id="left-sidebar-nav">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation">
+            <li class="user-details cyan darken-2">
+            <div class="row">
+                <div class="col col s4 m4 l4">
+                   
+                </div>
+                <div class="col col s8 m8 l8">
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li class="divider"></li>
+                        <li><a href="<?php echo base_url()?>adminlla/logout"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Welcome<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                    <p class="user-roal">Admin</p>
+                </div>
+            </div>
+            </li>
+
+            <li class="bold active"><a href="<?php echo base_url()?>dashboard" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+            </li>
+            
+            <li class="bold "><a href="<?php echo base_url()?>pendaftar" class="waves-effect waves-cyan"><i class="mdi-content-send"></i> Pendaftar</a>
+            </li>
+            
+            <li class="bold "><a href="<?php echo base_url()?>galeri" class="waves-effect waves-cyan"><i class="mdi-image-collections"></i> Gallery</a>
+            </li>
+
+            <li class="bold"><a href="<?php echo base_url()?>user" class="waves-effect waves-cyan"><i class="mdi-social-people"></i> User</a></li>
+
+            <li class="bold "><a target="_blank" href="<?php echo base_url()?>laporan" class="waves-effect waves-cyan"><i class="mdi-action-print"></i> Laporan</a>
+            </li>
+
+          <!--   <li class="li-hover"><div class="divider"></div></li> -->
+        </ul>
+        <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
+        </aside>
+      <!-- END LEFT SIDEBAR NAV-->
+
+      <section id="content">
+        <div class="container">
+          <div class="section">
+
+            
+            <div class="divider"></div>
+            
+            <!--card stats start-->
+        <div id="card-stats" class="card-panel">
+          <div class="row langsung">
+
+            <?php foreach($daftar as $pendaftar):?>
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-content green white-text">
+                  <p class="card-stats-title"><i class="mdi-action-book"></i> Pendaftar</p>
+                  <h4 class="card-stats-number"><?php echo $pendaftar->jumlah;?></h4>
+                  <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 
+                </div>
+              </div>
+            </div>
+          <?php endforeach;?>
+          <?php foreach($galeri as $gambar):?>
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-content amber white-text">
+                  <p class="card-stats-title"><i class="mdi-action-book"></i> Gallery</p>
+                  <h4 class="card-stats-number"><?php echo $gambar->galeri;?></h4>
+                  <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 
+                </div>
+              </div>
+            </div>
+            <?php endforeach;?>
+            <?php foreach($admin as $user):?>
+            <div class="col s12 m6 l4">
+              <div class="card">
+                <div class="card-content blue white-text">
+                  <p class="card-stats-title"><i class="mdi-action-book"></i> Admin</p>
+                  <h4 class="card-stats-number"><?php echo $user->admin;?></h4>
+                  <p class="card-stats-compare"><i class="mdi-hardware-keyboard-arrow-up"></i> 
+                </div>
+              </div>
+            </div>
+          <?php endforeach;?>
+
+          </div>
+        </div>
+
+  
+        
+            <!--card stats end-->
+
+            <div class="divider"></div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+          </div>
+        </div>
+       </section>
+    </div>
+  </div>
+
+
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+
+  <!-- START FOOTER -->
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <span>Copyright © 2015 <a class="grey-text text-lighten-4" href="http://themeforest.net/user/geekslabs/portfolio?ref=geekslabs" target="_blank">GeeksLabs</a> All rights reserved.</span>
+        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="http://geekslabs.com/">GeeksLabs</a></span>
+        </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+
+    <!-- ================================================
+    Scripts
+    ================================================ -->
+    
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/jquery-1.11.2.min.js"></script>    
+    <!--materialize js-->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/materialize.min.js"></script>
+    <!--prism-->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/prism/prism.js"></script>
+    <!--scrollbar-->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    
+    <!-- chartjs -->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/chartjs/chart.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/chartjs/chart-script.js"></script>
+
+    <!-- sparkline -->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/sparkline/sparkline-script.js"></script>
+
+    <!-- chartist -->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins/chartist-js/chartist.min.js"></script>   
+    
+    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/plugins.min.js"></script>
+    <!--custom-script.js - Add your own theme custom JS-->
+    <script type="text/javascript" src="<?php echo base_url()?>assets/admin/js/custom-script.js"></script>
+    
+</body>
+
+<!-- Mirrored from demo.geekslabs.com/materialize/v3.1/app-widget.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Jul 2017 02:19:56 GMT -->
+</html>
